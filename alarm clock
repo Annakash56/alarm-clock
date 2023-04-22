@@ -1,0 +1,20 @@
+import datetime
+import time
+import os
+
+# Ask user for alarm time
+hour = int(input("Enter hour (0-23): "))
+minute = int(input("Enter minute (0-59): "))
+
+# Get current time
+now = datetime.datetime.now()
+
+# Calculate time until alarm
+alarm_time = datetime.datetime.combine(now.date(), datetime.time(hour, minute))
+time_difference = alarm_time - now
+
+# Wait until alarm time
+time.sleep(time_difference.total_seconds())
+
+# Play alarm sound
+os.system("afplay alarm_sound.mp3")  # Replace with your own sound file
